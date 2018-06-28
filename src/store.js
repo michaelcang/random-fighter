@@ -10,11 +10,15 @@ export default new Vuex.Store({
   state: {
     username: '',
     health: 200,
-    point: 0
+    point: 0,
+    rooms: []
   },
   mutations: {
     register (state, payload) {
       state.username = payload
+    },
+    getAllRooms: (state, payload) => {
+      state.rooms = payload
     }
   },
   actions: {
@@ -28,6 +32,19 @@ export default new Vuex.Store({
       commit('register', payload)
       // simpan di localstorage biar gak ilang kalo di refresh
       localStorage.setItem('player', JSON.stringify(player))
+    },
+    createRoom: function (context, payload) {
+      db.ref('rooms/' + payload.name).set(payload.room)
+    },
+    getAllRooms: function ({ commit }, payload) {
+      db.ref('rooms/').on('value', function (snapshot) {
+        let roomsArray = []
+        snapshot.forEach(value => {
+          roomsArray.push(value.val())
+        })
+        console.log(roomsArray)
+        commit('getAllRooms', roomsArray)
+      })
     }
   }
 })
