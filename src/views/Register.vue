@@ -11,21 +11,21 @@
 <script>
 export default {
   name: 'register',
-  data: function () {
+  data () {
     return {
-      username: '',
+      username: ''
     }
   },
   methods: {
     register: function () {
-      this.$store.dispatch('register', this.username);
-      this.username = '';
-      this.$router.push('lobby');
+      this.$store.dispatch('register', this.username)
+      this.username = ''
+      this.$router.push('lobby')
     }
   },
-  created() {
+  created () {
     if (localStorage.getItem('player')) {
-      this.$router.push('lobby');
+      this.$router.push('lobby')
     }
   }
 }
