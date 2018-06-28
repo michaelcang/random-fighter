@@ -32,7 +32,7 @@
           <h4 class="card-title">{{room.name}}</h4><hr>
           <h5>Host: </h5>
           <p>{{ room.players[0].name }}</p>
-          <a href="#" class="btn btn-danger" @click="joinRoom(`room${index}`)">Challenge</a>
+          <a href="#" class="btn btn-danger" @click="joinRoom(room.name)">Challenge</a>
         </div>
       </div>
     </div>
