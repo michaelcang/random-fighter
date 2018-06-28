@@ -25,16 +25,14 @@
     
     <h3>Room List</h3>
     <div class="list">
-      <div v-for="(room, index) in rooms" :key="index">
-        <div class="card">
-          <div class="card-body">
-            <small>RandomFighter</small>
-            <br>
-            <h4 class="card-title">{{room.name}}</h4><hr>
-            <h5>Host: </h5>
-            <p>{{ room.players[0].name }}</p>
-            <a href="#" class="btn btn-danger" @click="joinRoom(room.name)">Challenge</a>
-          </div>
+      <div class="card" v-for="(room, index) in rooms" :key="index">
+        <div class="card-body">
+          <small>RandomFighter</small>
+          <br>
+          <h4 class="card-title">{{room.name}}</h4><hr>
+          <h5>Host: </h5>
+          <p>{{ room.players[0].name }}</p>
+          <a href="#" class="btn btn-danger" @click="joinRoom(`room${index}`)">Challenge</a>
         </div>
       </div>
     </div>
@@ -73,7 +71,20 @@ export default {
         winner: -1
       }
       localStorage.setItem('player', JSON.stringify(getPlayer))
-      this.$store.dispatch('createRoom', {room, name: 'room' + String(this.rooms.length + 1)})
+      this.$store.dispatch('createRoom', {room, name: this.roomName})
+      this.$router.push('wait')
+    },
+    joinRoom: function (roomName) {
+      console.log(roomName);
+      let getPlayer = JSON.parse(localStorage.getItem('player'))
+      getPlayer.turn = 1
+      getPlayer.attack = false
+      getPlayer.roomName = roomName
+      getPlayer.action = ''
+
+      localStorage.setItem('player', JSON.stringify(getPlayer))
+      this.$store.dispatch('joinRoom', {roomName, getPlayer})
+      this.$router.push('gameplay')
     },
     exit: function () {
       localStorage.removeItem('player')
@@ -91,6 +102,10 @@ export default {
 </script>
 
 <style>
+.card {
+  height: 80%;
+}
+
 .list {
   width: 400px;
   margin: auto;

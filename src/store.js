@@ -45,6 +45,10 @@ export default new Vuex.Store({
         console.log(roomsArray)
         commit('getAllRooms', roomsArray)
       })
+    },
+    joinRoom: function (context, payload) {
+      db.ref(`rooms/${payload.roomName}/players/1`).set(payload.getPlayer)
+      db.ref(`rooms/${payload.roomName}`).update({status: true})
     }
   }
 })
