@@ -25,8 +25,10 @@
     }
   }
 }
+
 h1 {
   font-family: 'Eater', cursive;
   color: #dc3545;
 }
+
 </style>
