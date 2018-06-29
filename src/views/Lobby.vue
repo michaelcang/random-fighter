@@ -98,10 +98,10 @@ export default {
       this.$store.dispatch('getAllRooms')
     }
   }
-}
 </script>
 
 <style>
+
 .card {
   height: 80%;
 }

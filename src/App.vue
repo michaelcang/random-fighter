@@ -1,13 +1,10 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <h1>Random Fighter</h1>
-    </div>
-    <router-view/>
+      <router-view/>
   </div>
 </template>
 
-<style lang="scss">
+<style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -32,3 +29,4 @@ h1 {
 }
 
 </style>
+
