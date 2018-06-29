@@ -83,10 +83,6 @@
         <h2  v-if="player.turn !== room.turn">enemies turn</h2>
       </div>
     </div>
-    <!-- <div class="container" v-else-if="player.turn !== room.turn && room.winner === -1">
-      <h1>Mohon tunggu sekarang giliran musuh</h1>
-      <img src="http://static.zerochan.net/CROWS.ZERO.full.1384713.jpg" alt="">
-    </div> -->
     <div class="container" v-else-if="room.winner === player.turn">
       <h1>selamat kamu telah membantai musuh</h1>
       <button @click="back" type="button" class="btn btn-outline-primary">Back List Room !!</button>
@@ -125,7 +121,6 @@
     },
     computed: {
       ...mapState([
-        'question',
         'player',
         'room'
       ])

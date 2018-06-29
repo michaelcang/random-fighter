@@ -7,7 +7,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">#Randome Fighter</h5>
+                <h5 class="modal-title">#Death Dice</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -17,13 +17,13 @@
                 <input v-model="roomName" placeholder="enter name here">
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" @click="createRoom">Save</button>
+                <button :disabled="!roomName" type="button" class="btn btn-danger btn-lg" data-dismiss="modal" @click="createRoom">Save</button>
                 <button type="button" class="btn btn-secondary btn-lg" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
         </div>
-        <h1 class="list">Room List :</h1>
+        <h1 class="list">Room List</h1>
         <div>
           <div v-for="(room, index) in rooms" :key="index">
             <div v-if="room.players.length===1" class="card" style="width: 30rem;">
@@ -31,9 +31,9 @@
                 <h3 class="card-title">Death Dice Room</h3>
                 <hr>
                 <p class="card-text">{{room.name}}</p>
-                <h5>Player: </h5>
+                <h5>Host: </h5>
                 <p>{{ room.players[0].name }}</p>
-                <a href="#" class="btn btn-danger btn-lg" @click="joinRoom(room.name)">Join</a>
+                <a href="#" class="btn btn-danger btn-lg" @click="joinRoom(room.name)">Challenge!</a>
               </div>
             </div>
           </div>

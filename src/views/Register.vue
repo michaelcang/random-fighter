@@ -11,7 +11,7 @@
               <label for="usr">Guest</label>
               <input v-model="name" type="text" class="form-control" id="usr">
               <br>
-            </div><button @click="register" type="button" class="btn btn-outline-danger">Let's Play !!</button>
+            </div><button @click="register" :disabled="!name" type="button" class="btn btn-outline-danger">Let's Play !!</button>
           </form>
         </div>
       </div>

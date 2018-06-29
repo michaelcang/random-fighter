@@ -4,7 +4,6 @@ import '../firebase'
 import firebase from 'firebase'
 // import firebase from 'firebase'
 // import {db} from '../firebase'
-import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -36,7 +35,7 @@ export default new Vuex.Store({
       name: 'berondong AK-47',
       point: 30,
       damage: 35
-    },{
+    }, {
       name: 'ledakan',
       point: 40,
       damage: 45
@@ -45,34 +44,30 @@ export default new Vuex.Store({
       point: 50,
       damage: 95
     }],
-    question: {},
     room: {}
   },
   mutations: {
     changeStatus (state, payload) {
       state.status = payload
     },
-    register(state, payload) {
+    register (state, payload) {
       state.username = payload
     },
     getAllRoom: (state, payload) => {
       state.rooms = payload
     },
-    setGameplayData(state, payload) {
+    setGameplayData (state, payload) {
       let player = JSON.parse(localStorage.getItem('player'))
       state.room = payload
       state.player = state.room.players[player.turn]
       localStorage.setItem('player', JSON.stringify(state.player))
     },
-    setQuestion(state, payload) {
-      state.question = payload
-    },
-    useSkill(state, payload) {
+    useSkill (state, payload) {
       // cek jika point cukup dan status attack
       if (!state.player.attack) {
         let enemyTurn
         // get enemy turn
-        (state.player.turn === 0) ? enemyTurn = 1: enemyTurn = 0
+        (state.player.turn === 0) ? enemyTurn = 1 : enemyTurn = 0
         // mengubah point di state player dan room
         state.player.point -= state.skill[payload].point
         state.room.players[state.player.turn].point -= state.skill[payload].point
@@ -88,29 +83,10 @@ export default new Vuex.Store({
         alert('Anda sudah menyerang, klik lanjutkan')
       }
     },
-    answering(state, payload) {
-      // cek status answer
-      if (!state.player.answer) {
-        // cek jawaban bener atau enggak
-        if (state.question.jawaban === payload) {
-          // tambah point player (di localstorage dan firebase)
-          // dan ganti status answer
-          state.player.point += 20
-          state.room.players[state.player.turn].point += 20
-          state.player.answer = true
-          alert('Benar! lumayan dapat 20 point')
-        } else {
-          state.player.answer = true
-          alert('Salah, dasar bodoh')
-        }
-      } else {
-        alert('Kan udah jawab tadi')
-      }
-    },
-    updatePlayers(state) {
+    updatePlayers (state) {
       let enemyTurn
       // get enemy turn
-      (state.player.turn === 0) ? enemyTurn = 1: enemyTurn = 0
+      (state.player.turn === 0) ? enemyTurn = 1 : enemyTurn = 0
       // mereset attack dan answer status
       state.player.attack = false
       state.player.answer = false
@@ -127,16 +103,16 @@ export default new Vuex.Store({
     createRoom: function (context, payload) {
       firebase.database().ref('rooms/' + payload.name).set(payload.room)
     },
-    delete: function (context){
+    delete: function (context) {
       let payload = localStorage.getItem('roomname')
-      let param = payload.substring(1,payload.length-1)
-      firebase.database().ref('rooms/'+param).remove()
-      .then (function(data){
-        console.log(data, 'sukses')
-      })
-      .catch(function(error){
-        console.log(error)
-      })
+      let param = payload.substring(1, payload.length - 1)
+      firebase.database().ref('rooms/' + param).remove()
+        .then(function (data) {
+          console.log(data, 'sukses')
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     },
     getAllRoom: function (context) {
       firebase.database().ref('rooms/').on('value', function (snapshot) {
@@ -152,7 +128,7 @@ export default new Vuex.Store({
       firebase.database().ref(`rooms/${payload.roomName}/players/1`).set(payload.getPlayer)
       firebase.database().ref(`rooms/${payload.roomName}`).update({status: true})
     },
-    register(context, payload) {
+    register (context, payload) {
       firebase.database().ref('users/').push({
         name: payload,
         health: context.state.health,
@@ -165,32 +141,16 @@ export default new Vuex.Store({
         point: context.state.point
       }
       localStorage.setItem('player', JSON.stringify(player))
-      // taruh localstorage biar klo d refresh gk hilang
     },
-    getQuestion(context) {
-      axios.get('https://opentdb.com/api.php?amount=1&difficulty=easy&type=boolean')
-        .then(response => {
-          let question = {
-            pertanyaan: response.data.results[0]['question'],
-            jawaban: response.data.results[0]['correct_answer']
-          }
-          context.commit('setQuestion', question)
-        })
-        .cath(error => {
-          console.log(error)
-        })
-    },
-    getGameplayData(context) {
-      // db.ref('/rooms').child(context.state.player.roomId).set(context.state.room)
+    getGameplayData (context) {
       let player = JSON.parse(localStorage.getItem('player'))
-      console.log(player);
-      
+      console.log(player)
       let roomRef = firebase.database().ref('/rooms').child(player.roomName)
       roomRef.on('value', function (snapshot) {
         context.commit('setGameplayData', snapshot.val())
       })
     },
-    endTurn(context) {
+    endTurn (context) {
       firebase.database().ref('/rooms').child(context.state.player.roomName).set(context.state.room)
     }
   }
