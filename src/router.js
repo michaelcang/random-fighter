@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+<<<<<<< HEAD
 import Lobby from './views/Lobby.vue'
+=======
+import Home from './views/Home.vue'
+>>>>>>> 9a4a92c87139bedfca47affa29e0e5f3a8d2180a
 import Register from './views/Register.vue'
 import Gameplay from './components/gameplay'
 import Wait from './views/Wait'

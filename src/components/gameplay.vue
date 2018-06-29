@@ -53,7 +53,6 @@
       </div>
       <h1>Terrr-{{room.players[player.turn].action}}</h1>
       <img src="https://media1.tenor.com/images/bfb7243cbedfe648c24edaeddb6c8494/tenor.gif" width="30%" class="flicker-in-1" v-if="room.players[player.turn].action.length>0">
-      <br>
       <h4>Darah {{room.players[0].name}} tersisa:</h4>
       <div class="progress">
         <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" :style="{width: room.players[0].health+'%'}" aria-valuenow="100"
@@ -76,7 +75,6 @@
           <img class="dadu mt-2" :src="linkshow">
           <br>
           <button type="button" class="btn btn-danger" @click="kocokdadu">Random</button>
-          <br>
           <button type="button" class="btn btn-success" @click="doneTurn">Lanjut</button>
         </div>
         <h2  v-if="player.turn !== room.turn">enemies turn</h2>
@@ -223,8 +221,8 @@
   }
 
   .btn {
-    margin-bottom: 3px;
-    font-size: 18px;
+    margin: 5px;
+    font-size: 20px;
   }
 
   .flicker-in-1 {
