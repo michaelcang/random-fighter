@@ -130,6 +130,21 @@ export default {
 </script>
 
 <style scoped>
+.ngewrap {
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .card-img-top{
+    width : 150px;
+    height: 150px;
+  }
+  .dadu{
+    width : 150px;
+    height: 150px;
+  }
+
 .flicker-in-1 {
 	-webkit-animation: flicker-in-1 2s linear both;
 	        animation: flicker-in-1 2s linear both;
