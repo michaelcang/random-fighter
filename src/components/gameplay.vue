@@ -53,6 +53,9 @@
       </div>
       <h1>Terrr-{{room.players[player.turn].action}}</h1>
       <img src="https://media1.tenor.com/images/bfb7243cbedfe648c24edaeddb6c8494/tenor.gif" width="30%" class="flicker-in-1" v-if="room.players[player.turn].action.length>0">
+      <br>
+      <br>
+      <br>
       <h4>Darah {{room.players[0].name}} tersisa:</h4>
       <div class="progress">
         <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" :style="{width: room.players[0].health+'%'}" aria-valuenow="100"
@@ -223,6 +226,7 @@
   .btn {
     margin: 5px;
     font-size: 20px;
+    width: 100%;
   }
 
   .flicker-in-1 {
