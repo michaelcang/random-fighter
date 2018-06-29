@@ -13,7 +13,7 @@ export default new Vuex.Store({
     status: false,
     username: '',
     health: 100,
-    point: 0,
+    point: 10000,
     action: '',
     attack: false,
     answer: false,
@@ -34,15 +34,15 @@ export default new Vuex.Store({
       damage: 30
     }, {
       name: 'berondong AK-47',
-      point: 40,
+      point: 30,
       damage: 35
     },{
       name: 'ledakan',
-      point: 30,
+      point: 40,
       damage: 45
     }, {
-      name: 'tampar mantan',
-      point: 40,
+      name: 'kepret mantan',
+      point: 50,
       damage: 95
     }],
     question: {},
@@ -69,7 +69,7 @@ export default new Vuex.Store({
     },
     useSkill(state, payload) {
       // cek jika point cukup dan status attack
-      if (state.player.point >= state.skill[payload].point && !state.player.attack) {
+      if (!state.player.attack) {
         let enemyTurn
         // get enemy turn
         (state.player.turn === 0) ? enemyTurn = 1: enemyTurn = 0
@@ -85,7 +85,7 @@ export default new Vuex.Store({
         if (state.room.players[enemyTurn].health <= 0) state.room.winner = state.player.turn
         alert(`Musuh ter${state.skill[payload].name}`)
       } else {
-        alert('Tidak bisa pakai skill')
+        alert('Anda sudah menyerang, klik lanjutkan')
       }
     },
     answering(state, payload) {
@@ -127,6 +127,17 @@ export default new Vuex.Store({
     createRoom: function (context, payload) {
       firebase.database().ref('rooms/' + payload.name).set(payload.room)
     },
+    delete: function (context){
+      let payload = localStorage.getItem('roomname')
+      let param = payload.substring(1,payload.length-1)
+      firebase.database().ref('rooms/'+param).remove()
+      .then (function(data){
+        console.log(data, 'sukses')
+      })
+      .catch(function(error){
+        console.log(error)
+      })
+    },
     getAllRoom: function (context) {
       firebase.database().ref('rooms/').on('value', function (snapshot) {
         let arrRoom = []
@@ -155,23 +166,6 @@ export default new Vuex.Store({
       }
       localStorage.setItem('player', JSON.stringify(player))
       // taruh localstorage biar klo d refresh gk hilang
-
-      // room: {
-      //   name: 'room 1',
-      //   players: [{
-      //     name: 'rex',
-      //     health: 100,
-      //     point: 0
-      //   }, {
-      //     name: 'john',
-      //     health: 100,
-      //     point: 0
-      //   }],
-      //   turn: 1,
-      //   action: '',
-      //   status: true,
-      //   winner: -1
-      // }
     },
     getQuestion(context) {
       axios.get('https://opentdb.com/api.php?amount=1&difficulty=easy&type=boolean')

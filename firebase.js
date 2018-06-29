@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+import firebase from 'firebase'
+
+const firebaseApp = firebase.initializeApp({
+  apiKey: "AIzaSyAmCqWeYmvIymp6z8fbYZwd4G2ddPsGAp0",
+  authDomain: "randome-fighter.firebaseapp.com",
+  databaseURL: "https://randome-fighter.firebaseio.com",
+  projectId: "randome-fighter",
+  storageBucket: "randome-fighter.appspot.com",
+  messagingSenderId: "1074364113897"
+})
+
+export const db = firebaseApp.database()
+=======
 import Firebase from 'firebase'
 
 const firebaseApp = Firebase.initializeApp({
@@ -16,3 +30,4 @@ const firebaseApp = Firebase.initializeApp({
 // Export the database for components to use.
 // If you want to get fancy, use mixins or provide / inject to avoid redundant imports.
 export const db = firebaseApp.database()
+>>>>>>> 9a4a92c87139bedfca47affa29e0e5f3a8d2180a
