@@ -2,42 +2,41 @@
   <div>
     <div class="container" v-if="player.turn === room.turn && room.winner === -1">
       <h2>hi {{player.name}}</h2>
-      <h2>point kamu : {{player.point}}</h2>
       <div class="ngewrap" style="margin:  0 0 0 2% ;">
         <div class="card" style="width: 14rem;">
           <img class="card-img-top" src="https://1.bp.blogspot.com/-qTeBmXisqYU/WVcnXzDd54I/AAAAAAAAQGU/PJlShOMr6xwjgEsue3Z46FUEQBY3GOSXwCLcBGAs/s1600/no-nothing-480.gif" alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">Anda kurang beruntung, tidak dapat menyerang musuh</p>
           </div>
         </div>
         <div class="card" style="width: 14rem;">
           <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/61FYUKHqDnL._SX522_.jpg   " alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">Anda dapat menampar musuh dengan teflon emak super sakit ini, teflon ini memiliki damage 25</p>
           </div>
         </div>
         <div class="card" style="width: 14rem;">
           <img class="card-img-top" src="https://media.screwfix.com/is/image//ae235?src=ae235/2026C_P&$prodImageMedium$" alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">anda dapar menebas musuh dengan kapak wiro sableng ini, kapak ini memiliki damage 30</p>
           </div>
         </div>
         <div class="card" style="width: 14rem;">
           <img class="card-img-top" src="https://cdn.britannica.com/700x450/70/123170-004-E7FBD22B.jpg" alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">Anda dapat memberondong musuh dengan senjata AK-47 ini. AK-47 ini memiliki damage 35</p>
           </div>
         </div>
         <div class="card" style="width: 14rem;">
           <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROt1fB4QcW6JTYZD48KJt3mch8c4NUfKbka_c0Fz6GZOcBcqFj" alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">Anda dapat meledakan musuh anda dengan granat nanas ini, granat nanas memiliki damage 40</p>
           </div>
         </div>
         <div class="card" style="width: 14rem;">
           <img class="card-img-top" src="https://cristology.files.wordpress.com/2013/08/11-tampar.jpg" alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">Anda dapat menampar musuh anda oleh mantannya. tamparan ini memiliki damage 95</p>
           </div>
         </div>
       </div>

@@ -21,29 +21,29 @@ export default new Vuex.Store({
     rooms: [],
     player: {},
     skill: [{
-      name: 'tusuk',
+      name: 'abaikan',
       point: 10,
-      damage: 30
+      damage: 0
+    }, {
+      name: 'tampol teflon',
+      point: 20,
+      damage: 25
     }, {
       name: 'tebas',
-      point: 20,
-      damage: 40
-    }, {
-      name: 'bacok',
       point: 30,
-      damage: 50
+      damage: 30
     }, {
-      name: 'cubit',
+      name: 'berondong AK-47',
       point: 40,
-      damage: 60
+      damage: 35
     },{
-      name: 'bacok2',
+      name: 'ledakan',
       point: 30,
-      damage: 50
+      damage: 45
     }, {
-      name: 'cubit2',
+      name: 'tampar mantan',
       point: 40,
-      damage: 60
+      damage: 95
     }],
     question: {},
     room: {}
