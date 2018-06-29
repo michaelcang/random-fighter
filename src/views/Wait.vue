@@ -26,9 +26,7 @@
     },
     methods: {
       back() {
-        let nameRoom = localStorage.getItem('roomname')
-        console.log(nameRoom);
-        this.$store.dispatch('delete', nameRoom)
+        this.$store.dispatch('delete')
         this.$router.push('lobby')
       }
     },
